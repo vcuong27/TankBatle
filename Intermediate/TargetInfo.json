@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TankBatle",
+			"Path": "D:\\Projects\\Unreal Projects\\unreal-training\\attendees\\cuong.nguyenvan3\\TankBatle\\Source\\TankBatle.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TankBatleEditor",
+			"Path": "D:\\Projects\\Unreal Projects\\unreal-training\\attendees\\cuong.nguyenvan3\\TankBatle\\Source\\TankBatleEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
