@@ -14,4 +14,6 @@ class TANKBATLE_API ATankBatleGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	ATankBatleGameModeBase();
 };
