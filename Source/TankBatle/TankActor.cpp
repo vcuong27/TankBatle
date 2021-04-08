@@ -49,7 +49,7 @@ ATankActor::ATankActor()
 	TankChassis_Mesh->SetupAttachment(GetMesh());
 	TankChassis_Mesh->SetStaticMesh(MDL_TankChassis.Object);
 	TankChassis_Mesh->SetMaterial(0, material.Object);
-	TankChassis_Mesh->SetRelativeLocation(FVector(0.0f, -29.0f, -59.0f));
+	TankChassis_Mesh->SetRelativeLocation(FVector(0.0f, -29.0f, -61.0f));
 	TankChassis_Mesh->SetRelativeRotation(FRotator(0.f, 90.f, 0.f));
 	TankChassis_Mesh->SetRelativeScale3D(FVector(5, 5, 5));
 
