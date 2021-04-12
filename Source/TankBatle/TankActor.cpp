@@ -45,7 +45,7 @@ ATankActor::ATankActor()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MDL_TankWheel_FL(TEXT("StaticMesh'/Game/StaticMeshs/MDL_TankWheel_FL.MDL_TankWheel_FL'"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MDL_TankWheel_FR(TEXT("StaticMesh'/Game/StaticMeshs/MDL_TankWheel_FR.MDL_TankWheel_FR'"));
 
-	UStaticMeshComponent* TankChassis_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankChassis"));
+	TankChassis_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankChassis"));
 	TankChassis_Mesh->SetupAttachment(GetMesh());
 	TankChassis_Mesh->SetStaticMesh(MDL_TankChassis.Object);
 	TankChassis_Mesh->SetMaterial(0, material.Object);
@@ -53,33 +53,38 @@ ATankActor::ATankActor()
 	TankChassis_Mesh->SetRelativeRotation(FRotator(0.f, 90.f, 0.f));
 	TankChassis_Mesh->SetRelativeScale3D(FVector(5, 5, 5));
 
-	UStaticMeshComponent* TankBarrel_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankBarrel"));
-	TankBarrel_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
+	USceneComponent* Object = CreateDefaultSubobject <USceneComponent>(TEXT("TankWheel_BLRoot"));
+	//Object->RegisterComponentWithWorld(this->GetWorld());
+	//Object->SetWorldLocation(this->GetActorLocation());
+	Object->AttachTo(TankChassis_Mesh);
+
+	TankBarrel_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankBarrel"));
+	TankBarrel_Mesh->AttachToComponent(Object, FAttachmentTransformRules::KeepRelativeTransform);
 	TankBarrel_Mesh->SetStaticMesh(MDL_TankBarrel.Object);
 	TankBarrel_Mesh->SetMaterial(0, material.Object);
 
-	UStaticMeshComponent* TankTurret_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankTurret"));
+	TankTurret_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankTurret"));
 	TankTurret_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
 	TankTurret_Mesh->SetStaticMesh(MDL_TankTurret.Object);
 	TankTurret_Mesh->SetMaterial(0, material.Object);
 
-	UStaticMeshComponent* TankWheel_BL_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_BL"));
+	TankWheel_BL_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_BL"));
 	TankWheel_BL_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
 	TankWheel_BL_Mesh->SetStaticMesh(MDL_TankWheel_BL.Object);
 	TankWheel_BL_Mesh->SetMaterial(0, material.Object);
 
-	UStaticMeshComponent* TankWheel_BR_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_BR"));
+	TankWheel_BR_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_BR"));
 	TankWheel_BR_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
 	TankWheel_BR_Mesh->SetStaticMesh(MDL_TankWheel_BR.Object);
 	TankWheel_BR_Mesh->SetStaticMesh(MDL_TankWheel_BR.Object);
 	TankWheel_BR_Mesh->SetMaterial(0, material.Object);
 
-	UStaticMeshComponent* TankWheel_FL_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_FL"));
+	TankWheel_FL_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_FL"));
 	TankWheel_FL_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
 	TankWheel_FL_Mesh->SetStaticMesh(MDL_TankWheel_FL.Object);
 	TankWheel_FL_Mesh->SetMaterial(0, material.Object);
 
-	UStaticMeshComponent* TankWheel_FR_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_FR"));
+	TankWheel_FR_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TankWheel_FR"));
 	TankWheel_FR_Mesh->AttachToComponent(TankChassis_Mesh, FAttachmentTransformRules::KeepRelativeTransform);
 	TankWheel_FR_Mesh->SetStaticMesh(MDL_TankWheel_FR.Object);
 	TankWheel_FR_Mesh->SetMaterial(0, material.Object);
